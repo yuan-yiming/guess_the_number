@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}游戏{% endblock %}
+{% block head %}
+<style type="text/css">
+	.main-content {
+		width: 540px;
+	}
+	hr {
+		width: 540px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		border: 0;
+		border-top: 1px solid #e9e6bb;
+	}
+</style>
+{% endblock %}
+{% block main %}
+<div class="main-content" align="center">
+    <h3>猜数字</h3>
+    {% if session['chances']== 10 %}
+    <p>游戏开始，你有10次机会去猜出正确答案</p>
+    {% else %}
+    <p>你还剩{{ session['chances'] }}次机会，加油！</p>
+    {% endif %}
+    <hr>
+    <h6>输入一个整数(0~1000)</h6>
+    <form method="POST" enctype='multipart/form-data'>
+    	<div class="form-group">
+    		<!--onkeyup="value=value.replace(/[^\d]/g,'') 控制表单只能输入数字-->
+    		<input class="form-control" type="text" name="guess-number" style="width: 220px;" onkeyup="value=value.replace(/[^\d]/g,'')">
+    	</div>
+    	<div class="form-group">
+    		<button class="form-control" style="width: 80px;">提交</button>
+    	</div>
+    </form>
+</div>
+{% endblock %}

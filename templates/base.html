@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{% block title %}{% endblock %}-猜数字</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="icon" href="{{ url_for('static', filename='guess_the_number.jpg') }}" type="image/x-icon">
+    <style type="text/css">
+        bady {
+            background-color: #8fa9d6;
+        }
+        .navbar {
+            background-color: #767ec7;
+            color: #ffffff;
+            border:0px solid #000000;
+            border-radius:1px;
+        }
+        .main {
+            background: #d1ffd6;
+            width: 780px;
+            overflow: hidden;
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+        hr {
+            width: 680px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-top: 1px solid #e9e6bb;
+        }
+    </style>
+    {% block head %}{% endblock %}
+    <script type="text/javascript">
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        })       
+    </script>
+</head>
+<body style="background-color: #fefefe">
+<nav class="navbar">
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color: #000000;">猜数字</a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/" style="color: #000000;">首页</a></li>
+            <li><a href="{{ url_for('rule') }}" style="color: #000000;">规则</a></li>
+            <li><a href="{{ url_for('rank') }}" style="color: #000000;">排名</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if nickname %}
+            <li><a href="#" style="color: #ffffff;">当前玩家：@{{ nickname }}</a></li>
+            <li><a href="{{ url_for('logout') }}" style="color: #ffffff;">退出</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+</nav>
+<div class="main">
+    <div class="container" style="width: 780px;" align="center" >
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning" style="width: 360px;height: 48px;background-color: #ff6d41;color: #ffffff;">
+    <button type="button" class="close" data-dismiss="alert" >&times;</button>
+    {{ message }}
+    </div>
+    {% endfor %}
+    {% block main %}
+    {% endblock %}
+    </div>
+    <hr>
+    <p class="text-center">友情链接：<a href="http://flask.pocoo.org/" target="_blank">flask官方文档</a>|
+        <a href="http://docs.jinkan.org/docs/flask/" target="_blank">falsk中文文档</a>|
+        <a href="http://www.pythondoc.com/flask-mega-tutorial/" target="_blank">Flask大型项目教程</a></p>
+    <footer id="foot" class="text-center"></footer>   
+</div>
+<script type="text/javascript" style="line-height: 100%">
+document.getElementById("foot").innerHTML =
+"<p>&copy;  " + new Date().getFullYear() + " 大明的编程学习之路</p>";   
+</script>
+</body>
+</html>

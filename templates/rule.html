@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}首页{% endblock %}
+{% block head %}
+<style type="text/css">
+	h3 {
+		padding-left: 45px;
+	}
+	p.rule-content {
+		padding-left: 45px;
+		padding-right: 45px;
+		font-size: 16px;
+		line-height: 200%;
+	}
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="text-left">
+<h3>游戏规则</h3>
+<hr>
+<p class="rule-content">
+	游戏开始前，玩家需要先输入一个名字，
+	然后系统会随机规定一个1~1000之间的数字，
+	玩家将有10次机会去猜这个数字，直到猜到为止，
+	如果10次机会都猜不中该数字，游戏即结束。
+</p>
+</div>
+{% endblock %}

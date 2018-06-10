@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}首页{% endblock %}
+{% block head %}
+<style type="text/css">
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="text-center">
+<h3>猜数字!</h3>
+<hr>
+<form action="" method="POST">
+	{% if not nickname %}
+	<div class="form-group" align="center" >
+		<p>游戏开始之前，先输入一个名字吧：</p>
+		<input type="text" class="form-control" placeholder="请输入名字" name="nick-name" 
+	style="width: 100px;" onkeydown="if(event.keyCode==13) return false;">
+	</div>
+	{% endif %}
+	<div class="form-group">
+		<p>现在可以开始游戏了</p>
+		<button type="commit" class="btn btn-default" style="width: 100px;"> 开始游戏</button>
+	</div>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}排名{% endblock %}
+{% block head %}
+<style type="text/css">
+	h3 {
+		color: #000000;
+		padding-top: 15px;
+		padding-bottom: 15px
+	}
+	table,th,td {
+		border-collapse: collapse;
+		padding: 5px;
+	}
+	th,td {
+    	text-align: center;
+    	width: 250px;
+	}
+	table tr:nth-child(odd) {
+    	background-color: #ddf0ed;
+	}
+	table tr:nth-child(even) {
+    	background-color: #c7ffec;
+	}
+</style>
+{% endblock %}
+
+{% block main %}
+<h3>玩家排名</h3>
+<table class="table">
+	<tr>
+		<th>玩家名字</th>
+		<th>游戏次数</th>
+		<th>最好成绩</th>
+	</tr>
+	{% for player in players %}
+	<tr>
+		<td>{{ player.nickname }}</td>
+		<td>{{ player.play_times }}</td>
+		<td>{{ player.top_score }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
