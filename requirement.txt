@@ -28,7 +28,7 @@ iso8601==0.1.12
 itsdangerous==0.24
 Jinja2==2.10
 leancloud==2.1.8
-Mako==1.0.7
+Mako==1.2.2
 Markdown==2.6.11
 MarkupSafe==1.0
 mod-wsgi==4.6.4+ap24vc14
